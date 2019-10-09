@@ -44,6 +44,17 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libvulkan
 
+# DTB Tool
+PRODUCT_HOST_PACKAGES += \
+    dtbhtoolExynos
+
+# Apex
+TARGET_FLATTEN_APEX := true
+DEXREOPT_GENERATE_APEX_IMAGE := false
+
+# AOSP
+BUILD_BROKEN_DUP_RULES := true
+
 # Audio
 USE_XML_AUDIO_POLICY_CONF := 1
 
