@@ -832,6 +832,12 @@ on fs
 # ARGOSD network_throughput
     chown system system /dev/network_throughput
 
+# Loggy
+service loggy /system/bin/sh /loggy.sh
+    class main
+    user root
+    oneshot
+
 service abox /vendor/bin/main_abox 17c50000.abox /data/vendor/log/abox
     class late_start
     user audioserver

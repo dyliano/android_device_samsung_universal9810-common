@@ -34,7 +34,8 @@ PRODUCT_PACKAGES += \
     init.samsungexynos9810.rc \
     init.samsungexynos9810.usb.rc \
     init.baseband.rc \
-    ueventd.samsungexynos9810.rc
+    ueventd.samsungexynos9810.rc \
+    loggy.sh
 
 # VNDK
 PRODUCT_COPY_FILES += \
