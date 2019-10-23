@@ -9,14 +9,14 @@ endif
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
-    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
-    frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
-    frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml \
-    frameworks/native/data/etc/android.hardware.sensor.heartrate.xml:system/etc/permissions/android.hardware.sensor.heartrate.xml \
-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/native/data/etc/android.hardware.vr.high_performance.xml:system/etc/permissions/android.hardware.vr.high_performance.xml \
-    frameworks/native/data/etc/android.software.freeform_window_management.xml:system/etc/permissions/android.software.freeform_window_management.xml
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.bluetooth.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.bluetooth_le.xml \
+    frameworks/native/data/etc/android.hardware.ethernet.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.ethernet.xml \
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.fingerprint.xml \
+    frameworks/native/data/etc/android.hardware.sensor.heartrate.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.sensor.heartrate.xml \
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/native/data/etc/android.hardware.vr.high_performance.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.vr.high_performance.xml \
+    frameworks/native/data/etc/android.software.freeform_window_management.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.freeform_window_management.xml
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
@@ -60,15 +60,15 @@ BUILD_BROKEN_DUP_RULES := true
 USE_XML_AUDIO_POLICY_CONF := 1
 
 PRODUCT_COPY_FILES += \
-    frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:system/etc/usb_audio_policy_configuration.xml
+    frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/usb_audio_policy_configuration.xml
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
-    $(LOCAL_PATH)/audio/mixer_gains.xml:system/etc/mixer_gains.xml \
-    $(LOCAL_PATH)/audio/mixer_paths_r02.xml:system/etc/mixer_paths_r02.xml \
-    $(LOCAL_PATH)/audio/mixer_gains_r02.xml:system/etc/mixer_gains_r02.xml \
-    $(LOCAL_PATH)/audio/mixer_paths_r08.xml:system/etc/mixer_paths_r08.xml \
-    $(LOCAL_PATH)/audio/mixer_gains_r08.xml:system/etc/mixer_gains_r08.xml
+    $(LOCAL_PATH)/audio/mixer_paths.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/mixer_paths.xml \
+    $(LOCAL_PATH)/audio/mixer_gains.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/mixer_gains.xml \
+    $(LOCAL_PATH)/audio/mixer_paths_r02.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/mixer_paths_r02.xml \
+    $(LOCAL_PATH)/audio/mixer_gains_r02.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/mixer_gains_r02.xml \
+    $(LOCAL_PATH)/audio/mixer_paths_r08.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/mixer_paths_r08.xml \
+    $(LOCAL_PATH)/audio/mixer_gains_r08.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/mixer_gains_r08.xml
 
 # Bluetooth
 PRODUCT_PACKAGES += \
@@ -109,7 +109,7 @@ PRODUCT_PACKAGES += \
 
 # Keylayout
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keylayout/gpio_keys.kl:system/usr/keylayout/gpio_keys.kl
+    $(LOCAL_PATH)/keylayout/gpio_keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/gpio_keys.kl
 
 # Remove unwanted packages
 PRODUCT_PACKAGES += \

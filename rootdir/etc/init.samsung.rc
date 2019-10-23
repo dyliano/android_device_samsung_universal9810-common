@@ -144,7 +144,7 @@ on boot
     chown system system /efs/drm/h2k
 
     # icd
-    check_icd
+    #check_icd
     chown system system /dev/icd
     chmod 0644 /dev/icd
     chown system system /dev/icdr

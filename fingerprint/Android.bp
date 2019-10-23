@@ -1,0 +1,12 @@
+cc_library_shared {
+	name: "fingerprint.9810",
+	srcs: ["fingerprint.c"],
+
+	shared_libs: [
+		"libhardware",
+		"liblog",
+	],
+
+	relative_install_path: "hw",
+
+}

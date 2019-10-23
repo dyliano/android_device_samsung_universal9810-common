@@ -3,6 +3,11 @@
 
 COMMON_PATH := device/samsung/universal9810-common
 
+TARGET_NEEDS_LOKI := false
+
+BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_PHONY_TARGETS := true
+
 # Platform
 BOARD_VENDOR := samsung
 TARGET_BOARD_PLATFORM := exynos5
@@ -38,8 +43,7 @@ BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 TARGET_CUSTOM_DTBTOOL := dtbhtoolExynos
-BOARD_ROOT_EXTRA_FOLDERS += efs cpefs
-TARGET_FS_CONFIG_GEN := $(LOCAL_PATH)/config.fs
+BOARD_ROOT_EXTRA_FOLDERS += efs cpefs storage product
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE     := 57671680
@@ -48,6 +52,7 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 3221225472
 BOARD_VENDORIMAGE_PARTITION_SIZE   := 681574400
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 21474836480
 BOARD_CACHEIMAGE_PARTITION_SIZE    := 209715200
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Filesystem
@@ -78,12 +83,23 @@ TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_FBE := true
 endif
 
+# SELinux
+SELINUX_IGNORE_NEVERALLOWS := true
+BOARD_SEPOLICY_DIRS += device/samsung/universal9810-common/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+	file_contexts \
+	file.te
+
+
 # Android Verified Boot
 BOARD_AVB_ENABLE := false
 BOARD_BUILD_DISABLED_VBMETAIMAGE := true
 
 # VNDK
 BOARD_VNDK_VERSION := current
+PRODUCT_EXTRA_VNDK_VERSIONS += 28 27
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 # Vendor
 TARGET_COPY_OUT_VENDOR := vendor
@@ -112,10 +128,10 @@ BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
 
 # Lineage hardware
-ifneq ($(findstring lineage, $(TARGET_PRODUCT)),)
-JAVA_SOURCE_OVERLAYS := \
-    org.lineageos.hardware|hardware/samsung/lineagehw|**/*.java
-endif
+#ifneq ($(findstring lineage, $(TARGET_PRODUCT)),)
+#JAVA_SOURCE_OVERLAYS := \
+#    org.lineageos.hardware|hardware/samsung/lineagehw|**/*.java
+#endif
 
 # Inherit from the proprietary version
 -include vendor/samsung/universal9810-common/BoardConfigVendor.mk
