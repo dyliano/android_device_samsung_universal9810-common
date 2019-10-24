@@ -15,4 +15,4 @@ config.disable_consumerir=true
 ro.adb.secure=0
 ro.secure=0
 ro.debuggable=1
-persist.sys.config.usb=mtp,adb
+persist.sys.usb.config =mtp,adb
