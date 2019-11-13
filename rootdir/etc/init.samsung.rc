@@ -18,6 +18,14 @@ on init
     chown system system /proc/auto_comment
     chmod 0600 /proc/auto_comment
 
+    # Override vendor mixer_paths/gains
+    mount none /system/etc/mixer_paths.xml /vendor/etc/mixer_paths.xml bind
+    mount none /system/etc/mixer_gains.xml /vendor/etc/mixer_gains.xml bind
+    mount none /system/etc/mixer_paths_r02.xml /vendor/etc/mixer_paths_r02.xml bind
+    mount none /system/etc/mixer_gains_r02.xml /vendor/etc/mixer_gains_r02.xml bind
+    mount none /system/etc/mixer_paths_r08.xml /vendor/etc/mixer_paths_r08.xml bind
+    mount none /system/etc/mixer_gains_r08.xml /vendor/etc/mixer_gains_r08.xml bind
+
     # ap hw param data
     chown system system /sys/class/sec/sec_hw_param/ap_info
     chmod 0600 /sys/class/sec/sec_hw_param/ap_info
